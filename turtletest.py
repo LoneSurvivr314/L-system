@@ -25,24 +25,26 @@ t = turtle.Turtle()
 s.tracer(0, 0)
 
 
-mySys.iterate(5)
 
-for turnAngle in range(60,-1,-1):
+for iteration in range(1,10):
     #rest the turtle
-    t.goto(0,0)
+    t.goto(-256,-256)
     t.clear()
-    t.setheading(90)
-    
+    t.left(60)
+
+    mySys.iterate(1)
+
     #perform each draw action for a certain letter
     for letter in mySys.sentence:
         if letter in ("A","B"):
-            t.fd(4)
+            t.fd(512/2**iteration)
         elif letter == "-":
-            t.right(turnAngle)
+            t.right(60)
         elif letter == "+":
-            t.left(turnAngle)
+            t.left(60)
     
     #update screen
     s.update()
+    time.sleep(1)
     
 turtle.done()

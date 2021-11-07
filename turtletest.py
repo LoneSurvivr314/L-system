@@ -44,7 +44,5 @@ for turnAngle in range(60,-1,-1):
     
     #update screen
     s.update()
-    print(turnAngle)
-
-
+    
 turtle.done()

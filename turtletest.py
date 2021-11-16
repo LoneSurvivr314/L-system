@@ -7,11 +7,16 @@ class L_system:
 
     def iterate(self, numIterations):
         for i in range(numIterations):
-            self.sentence = [self.rules.get(word, word) for word in self.sentence] #try to find a matching replacemnt rule, else return the original
+            self.sentence = [self.rules.get(letter, letter) for letter in self.sentence] #try to find a matching replacemnt rule, else return the original
             self.sentence = flatten2d(self.sentence)
 
     def display(self, spacer = ""):
         print(spacer.join(self.sentence))
+
+    def render(self, renderRules, turtle):
+        for letter in self.sentence:
+            turtle.renderRules[letter]
+
 
 def flatten2d(list):
     return [element for sublist in list for element in sublist]
@@ -24,27 +29,33 @@ s = turtle.Screen()
 t = turtle.Turtle()
 s.tracer(0, 0)
 
+mySys.iterate(3)
+mySys.render({"A":b.fd(20),"B":b.fd(20),"-":b.right(60),"+":b.left(60)},t)
 
+<<<<<<< HEAD
+#update screen
+s.update()
+time.sleep(1)
+=======
+mySys.iterate(5)
 
-for iteration in range(1,10):
+for turnAngle in range(60,-1,-1):
     #rest the turtle
-    t.goto(-256,-256)
+    t.goto(0,0)
     t.clear()
-    t.left(60)
-
-    mySys.iterate(1)
-
+    t.setheading(90)
+    
     #perform each draw action for a certain letter
     for letter in mySys.sentence:
         if letter in ("A","B"):
-            t.fd(512/2**iteration)
+            t.fd(4)
         elif letter == "-":
-            t.right(60)
+            t.right(turnAngle)
         elif letter == "+":
-            t.left(60)
+            t.left(turnAngle)
     
     #update screen
     s.update()
-    time.sleep(1)
+>>>>>>> parent of 49826e5 (Update turtletest.py)
     
 turtle.done()

@@ -13,10 +13,6 @@ class L_system:
     def display(self, spacer = ""):
         print(spacer.join(self.sentence))
 
-    def render(self, renderRules, turtle):
-        for letter in self.sentence:
-            turtle.renderRules[letter]
-
 
 def flatten2d(list):
     return [element for sublist in list for element in sublist]
@@ -29,14 +25,7 @@ s = turtle.Screen()
 t = turtle.Turtle()
 s.tracer(0, 0)
 
-mySys.iterate(3)
-mySys.render({"A":b.fd(20),"B":b.fd(20),"-":b.right(60),"+":b.left(60)},t)
 
-<<<<<<< HEAD
-#update screen
-s.update()
-time.sleep(1)
-=======
 mySys.iterate(5)
 
 for turnAngle in range(60,-1,-1):
@@ -56,6 +45,5 @@ for turnAngle in range(60,-1,-1):
     
     #update screen
     s.update()
->>>>>>> parent of 49826e5 (Update turtletest.py)
     
 turtle.done()
